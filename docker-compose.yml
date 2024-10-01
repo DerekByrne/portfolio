@@ -19,6 +19,12 @@ services:
       - mqtt5
     volumes:
       - ./python-mqtt-ingest/mqtt-ingester.py:/mqtt-ingester.py  # Update path based on file location
+  mqtt-test-send:
+    build: ./mqtt-test-send
+    depends_on:
+      - mqtt-client
+    volumes:
+      - ./pmqtt-test-send/mqtt-sender.py:/mqtt-sender.py  # Update path based on file location
 
 # volumes for mapping data,config and log
 volumes:
